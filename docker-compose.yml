@@ -1,0 +1,36 @@
+version: '3.4'
+
+services:
+    sql.server:
+        image: "mcr.microsoft.com/mssql/server:2019-latest"
+        container_name: "sql.server"
+        ports:
+            - 1402:1433
+        environment:
+            ACCEPT_EULA: "Y"
+            SA_PASSWORD: "PswdN0t4use!*."
+
+    gadgets.api:
+        image: ${DOCKER_REGISTRY-}gadgetsapi
+        container_name: "web.api"
+        ports:
+            - 51901:80
+            - 61901:443
+        build:
+            context: .
+            dockerfile: Gadgets.Api/Dockerfile
+        depends_on:
+            - sql.server
+
+    gadgets.web:
+        image: ${DOCKER_REGISTRY-}gadgetsweb
+        container_name: "web.app"
+        ports:
+            - 51902:80
+            - 61902:443
+        build:
+            context: .
+            dockerfile: Gadgets.Web/Dockerfile
+        depends_on:
+            - gadgets.api
+            - sql.server
