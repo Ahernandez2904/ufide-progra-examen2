@@ -10,8 +10,9 @@
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <header class="navbar-light bg-light">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3
+             navbar navbar-light bg-light">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Gadgets.Web</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -31,8 +32,8 @@
                                         Mantenimientos
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMantenimientos">
-                                        <a class="dropdown-item" asp-controller="Gadgets" asp-action="Index">Gadgets</a>
-                                        <a class="dropdown-item" asp-controller="Wheater" asp-action="Index">Weather</a>
+                                        <a class="dropdown-item" asp-controller="Gadgets" asp-action="Index"><i class="fas fa-toolbox"></i> Gadgets</a>
+                                        <a class="dropdown-item" asp-controller="Weather" asp-action="Index"><i class="fas fa-bolt"></i> Weather</a>
                                     </div>
                                 </div>
                             </li>
@@ -42,16 +43,16 @@
                         @if (!User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
-                                <a class="btn text-dark" asp-controller="Account" asp-action="Login">Ingresar</a>
+                                <a class="btn text-dark" asp-controller="Account" asp-action="Login"><i class="fas fa-sign-in-alt"></i> Ingresar</a>
                             </li>
                             <li class="nav-item">
-                                <a class="btn text-dark" asp-controller="Account" asp-action="Register">Registrarse</a>
+                                <a class="btn text-dark" asp-controller="Account" asp-action="Register"><i class="fas fa-user-plus"></i> Registrarse</a>
                             </li>
                         }
                         else
                         {
                             <li class="nav-item">
-                                <a class="btn text-dark" asp-controller="Account" asp-action="Logout">Cerrar</a>
+                                <a class="btn text-dark" asp-controller="Account" asp-action="Logout"><i class="fas fa-sign-out-alt"></i> Cerrar</a>
                             </li>
                         }
                     </ul>

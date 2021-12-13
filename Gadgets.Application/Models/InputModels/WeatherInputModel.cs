@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Gadgets.Application.Models.InputModels
 {
-    public class WheatherInputModel
+    public class WeatherInputModel
     {
         [Required]
         public string Query { get; set; }

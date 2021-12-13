@@ -1,13 +1,16 @@
 ﻿@model Gadgets.Application.Models.ViewModels.LoginViewModel
 
-<h1>Ingresar</h1>
+<div class="jumbotron">
+    <h1 class="display-4">Ingresar</h1>
+    <hr class="my-4">
+    <p>Ingresar con una cuenta</p>
+</div>
 
 <form method="post">
     <input type="hidden" asp-for="ReturnUrl" />
     <div class="container table">
         <div class="row">
             <div class="col-md-5">
-                <h4>Ingresar con una cuenta</h4>
                 <hr />
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group">

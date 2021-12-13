@@ -1,12 +1,16 @@
 ﻿@model Gadgets.Application.Models.ViewModels.RegisterViewModel
 
-<h1>Register</h1>
+<div class="jumbotron">
+    <h1 class="display-4">Registrarse</h1>
+    <hr class="my-4">
+    <p>Crear nuevo usuario</p>
+</div>
 
 <form action="@Model.ReturnUrl" method="post">
     <div class="container table">
         <div class="row">
             <div class="col-md-5">
-                <h4>Registrar una nueva cuenta</h4>
+                
                 <hr />
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group">

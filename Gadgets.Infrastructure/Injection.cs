@@ -43,7 +43,7 @@ namespace Gadgets.Infrastructure
 
             services.AddTransient<IApplicationDbContext, ApplicationDbContext>();
             services.AddTransient<IGadgetContext, GadgetContext>();
-
+            services.AddTransient<IWeatherContext, WeatherContext>();
             return services;
         }
     }

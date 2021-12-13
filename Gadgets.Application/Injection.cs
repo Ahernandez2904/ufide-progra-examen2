@@ -53,8 +53,10 @@ namespace Gadgets.Application
             
             services.Configure<ClientConfiguration>(configuration.GetSection("ClientConfiguration"));
             services.AddHttpClient<IGadgetsClient, GadgetsClient>();
+            services.AddHttpClient<IWeatherClient, WeatherClient>();
 
-            IServiceCollection serviceCollection = services.AddTransient<IGadgetLogic, GadgetLogic>();
+            IServiceCollection serviceCollection2 = services.AddTransient<IGadgetLogic, GadgetLogic>();
+            IServiceCollection serviceCollection = services.AddTransient<IWeatherLogic, WeatherLogic>();
             services.AddTransient<IUserLogic, UserLogic>();
             services.AddTransient<ITokenService, TokenService>();
 

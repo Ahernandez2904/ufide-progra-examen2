@@ -1,67 +1,35 @@
 ﻿@model List<Gadgets.Application.Models.ViewModels.WeatherViewModel>
 
-<h2>Listado de Clima</h2>
+<div class="jumbotron">
+    <h1 class="display-4">Listado del clima</h1>
+    <hr class="my-4">
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href="#" role="button"><i class="fas fa-cloud"></i> Nuevo :)</a>
+    </p>
+</div>
 
-<table class="table table-sm table-striped table-bordered m-2">
-    <thead>
-        <tr>
-            <th>Tipo</th>
-            <th>Marca</th>
-            <th>Nombre</th>
-            <th>Precio</th>
-            <th>
-                <a class="btn btn-sm btn-success" asp-controller="Gadgets" asp-action="Upsert">
-                    <i class="fas fa-plus-circle"></i> Crear
-                </a>
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var w in Model)
-        {
-            <tr id="@w.Query@w.RequestTime">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        }
-    </tbody>
-</table>
-
-<script>
-    function Borrar(id) {
-        swal
-            (
-                {
-                    title: "Borrar",
-                    text: "¿Está seguro que desea borrar el registro?",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true
-                }
-            ).then
-            (
-                (borrarlo) => {
-                    if (borrarlo) {
-                        $.ajax
-                            (
-                                {
-                                    type: "DELETE",
-                                    url: "/gadgets/borrar/?id=" + id,
-                                    success: function (data) {
-                                        if (data.success) {
-                                            $("#" + id).remove();
-                                            toastr.success(data.message);
-                                        }
-                                        else {
-                                            toastr.error(data.message);
-                                        }
-                                    }
-                                }
-                            );
-                    }
-                }
-            );
-    }
-</script>
+@foreach (var w in Model)
+{
+<div class="container border border-top-0 border-light">
+    <div class="row">
+        <div class="col-sm-1">
+            <img src="@w.weather_icons"  />
+        </div>
+        <div class="col-sm-2">
+            @w.temperature °C
+        </div>
+        <div class="col-sm-2">
+            Humidity: @w.humidity %
+            <br />
+            Wind: @w.wind_speed @w.wind_dir
+        </div>
+        <div class="col-sm-7">
+            @w.name, @w.region, @w.country 
+            <br />
+            @w.RequestTime
+            <br />
+            @w.weather_descriptions
+        </div>
+    </div>
+</div>
+}
