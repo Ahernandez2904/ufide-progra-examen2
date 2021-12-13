@@ -112,6 +112,23 @@ namespace Gadgets.Infrastructure.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("Gadgets.Domain.Entities.Weather", b =>
+                {
+                    b.Property<string>("Query")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("RequestTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Result")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Query", "RequestTime");
+
+                    b.ToTable("Weather");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
