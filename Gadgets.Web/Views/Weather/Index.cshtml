@@ -1,0 +1,67 @@
+﻿@model List<Gadgets.Application.Models.ViewModels.WeatherViewModel>
+
+<h2>Listado de Clima</h2>
+
+<table class="table table-sm table-striped table-bordered m-2">
+    <thead>
+        <tr>
+            <th>Tipo</th>
+            <th>Marca</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>
+                <a class="btn btn-sm btn-success" asp-controller="Gadgets" asp-action="Upsert">
+                    <i class="fas fa-plus-circle"></i> Crear
+                </a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var w in Model)
+        {
+            <tr id="@w.Query@w.RequestTime">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    function Borrar(id) {
+        swal
+            (
+                {
+                    title: "Borrar",
+                    text: "¿Está seguro que desea borrar el registro?",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true
+                }
+            ).then
+            (
+                (borrarlo) => {
+                    if (borrarlo) {
+                        $.ajax
+                            (
+                                {
+                                    type: "DELETE",
+                                    url: "/gadgets/borrar/?id=" + id,
+                                    success: function (data) {
+                                        if (data.success) {
+                                            $("#" + id).remove();
+                                            toastr.success(data.message);
+                                        }
+                                        else {
+                                            toastr.error(data.message);
+                                        }
+                                    }
+                                }
+                            );
+                    }
+                }
+            );
+    }
+</script>

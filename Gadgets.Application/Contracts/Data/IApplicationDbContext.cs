@@ -12,6 +12,8 @@ namespace Gadgets.Application.Contracts.Data
     {
         DbSet<Gadget> Gadgets { get; set; }
 
+        DbSet<Weather> Weather { get; }
+
         void Guardar();
     }
 }

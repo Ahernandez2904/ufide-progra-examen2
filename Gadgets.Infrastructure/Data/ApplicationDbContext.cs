@@ -17,7 +17,7 @@ namespace Gadgets.Infrastructure.Data
         {
         }
 
-        /*protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Weather>(
                 w => {
@@ -26,10 +26,10 @@ namespace Gadgets.Infrastructure.Data
             );
             base.OnModelCreating(builder);
         }
-        */
+        
         public DbSet<Gadget> Gadgets { get; set; }
 
-        //public DbSet<Weather> Weather { get; set; }
+        public DbSet<Weather> Weather { get; set; }
 
         public void Guardar()
         {
